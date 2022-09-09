@@ -3,17 +3,19 @@
     <!-- <p>{{ name }} - {{ age }}</p>
     <button @click="changeName('Jahanzeb')">change name</button>
     <button @click="changeAge(30)">change age</button> -->
-    <p>{{ jobs[0].location }}</p>
+    <!-- <p>{{ jobs[0].location }}</p> -->
+    <JobList :jobs="jobs" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue";
+import JobList from "./components/JobsList.vue";
 import Job from "./types/Job";
 
 export default defineComponent({
   name: "App",
-  components: {},
+  components: { JobList },
   setup() {
     // const state = reactive({
     //   name: "Link",
