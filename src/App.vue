@@ -1,33 +1,75 @@
 <template>
   <div class="app">
-    <p>{{ name }} - {{ age }}</p>
+    <!-- <p>{{ name }} - {{ age }}</p>
     <button @click="changeName('Jahanzeb')">change name</button>
-    <button @click="changeAge(30)">change age</button>
+    <button @click="changeAge(30)">change age</button> -->
+    <p>{{ jobs[0].location }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, ref, toRefs } from "vue";
+import Job from "./types/Job";
 
 export default defineComponent({
   name: "App",
   components: {},
-  data() {
-    return {
-      name: "Link",
-      age: 25 as number | string,
-    };
+  setup() {
+    // const state = reactive({
+    //   name: "Link",
+    //   age: 25 as string | number,
+    // })
+    // state.name = 'John'
+    // return { ...toRefs(state) };
+    // const name = ref("Link");
+    // const age = ref<number | string>(25);
+    // return { name, age };
+
+    const jobs = ref<Job[]>([
+      {
+        title: "farm worker",
+        location: "lon lon ranch",
+        salary: 30000,
+        id: "1",
+      },
+      {
+        title: "quarryman",
+        location: "deatch mountain",
+        salary: 40000,
+        id: "2",
+      },
+      {
+        title: "flute player",
+        location: "the lost woods",
+        salary: 35000,
+        id: "3",
+      },
+      {
+        title: "fisherman",
+        location: "lake hylia",
+        salary: 21000,
+        id: "4",
+      },
+      {
+        title: "prison guard",
+        location: "gerudo valley",
+        salary: 32000,
+        id: "5",
+      },
+    ]);
+
+    return { jobs };
   },
-  methods: {
-    changeName(name: string) {
-      this.name = name;
-      return name;
-    },
-    changeAge(age: number | string) {
-      this.age = age;
-      return age;
-    },
-  },
+  // methods: {
+  //   changeName(name: string) {
+  //     this.name = name;
+  //     return name;
+  //   },
+  //   changeAge(age: number | string) {
+  //     this.age = age;
+  //     return age;
+  //   },
+  // },
 });
 </script>
 
